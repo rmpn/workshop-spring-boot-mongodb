@@ -38,6 +38,13 @@ public class UserService {
 
 	}
 	
+	public void delete(User obj) {
+          
+		findById(obj.getId());			
+		
+		repo.delete(obj);
+
+	}
 	
 	public User fromDTO(UserDTO objDTO) {
 		
