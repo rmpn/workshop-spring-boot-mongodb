@@ -1,5 +1,6 @@
 package com.rmpn.workshopmongo.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,13 @@ public class PostService {
 	public User fromDTO(UserDTO objDTO) {
 
 		return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail());
+	}
+	
+	public List<Post> fullSearch(String text, Date minDate, Date maxDate ){
+		maxDate = new Date(maxDate.getTime()+24*60*60*1000);
+		
+		return repo.fullSearch(text, minDate, maxDate);
+		
 	}
 
 }
